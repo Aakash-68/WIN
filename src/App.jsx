@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-     <div className="flex items-center justify-center min-h-screen gap-30">
+      <div className="flex items-center justify-center min-h-screen gap-10 flex-col-reverse md:flex-row md:gap-30">
           <GlassCard />
         <div className="flex flex-col items-center gap-5">
           <img
