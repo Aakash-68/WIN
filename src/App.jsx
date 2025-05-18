@@ -13,13 +13,10 @@ function App() {
     <>
       
       <div className="flex items-center justify-center min-h-screen gap-10 flex-col-reverse md:flex-row md:gap-30">
-          
-          
             <GlassCard />
         <div className="flex flex-col items-center gap-5">
           <img
             src="src/assets/profile.svg"
-            alt="Centered Image"
             className="w-70 h-70 object-cover rounded-full flex items-center justify-center text-4xl shadow-lg"
           />
           <div className=''>

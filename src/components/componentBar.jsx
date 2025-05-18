@@ -5,19 +5,19 @@ const contactPlatforms = [
   { name: 'GitHub', icon: Github, url: 'https://github.com/Aakash-68', alt: 'Visit my GitHub profile' },
   { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/aakash-yogabalu-0a85652a8', alt: 'Connect with me on LinkedIn' },
   { name: 'Email', icon: Mail, url: 'aakash.27@unb.ca', alt: 'Copy my email address' },
-  { name: 'Download Resume', icon: FileDown, url: './src/assets/pdf/aakashResume.pdf', alt: 'Download my resume (PDF)' }
+  { name: 'Download Resume', icon: FileDown, url: 'https://drive.google.com/uc?export=download&id=16jGZIDGlMPEPp9HGTrRkwF9Dm1gM26Kf', alt: 'Download my resume (PDF)' }
 ];
 
 export default function ContactBar() {
   const [copied, setCopied] = useState(false);
-
+  
   const handleEmailClick = (email) => {
     navigator.clipboard.writeText(email).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000); // Hide message after 2 seconds
     });
   };
-
+  
   return (
     <div className="w-full flex flex-col items-center justify-center mx-auto p-4">
       <div className="flex flex-col items-center gap-3">
@@ -25,7 +25,6 @@ export default function ContactBar() {
           <div className="flex items-center gap-3">
             {contactPlatforms.map((platform) => {
               const Icon = platform.icon;
-
               if (platform.name === 'Email') {
                 return (
                   <button
@@ -45,7 +44,6 @@ export default function ContactBar() {
                   </button>
                 );
               }
-
               return (
                 <a
                   key={platform.name}
