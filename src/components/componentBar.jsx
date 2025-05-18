@@ -1,9 +1,9 @@
 import { Github, Linkedin, Mail, FileDown } from 'lucide-react';
 
 const contactPlatforms = [
-  { name: 'GitHub', icon: Github, url: 'https://github.com/', alt: 'Visit my GitHub profile' },
-  { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/', alt: 'Connect with me on LinkedIn' },
-  { name: 'Email', icon: Mail, url: 'mailto:example@example.com', alt: 'Send me an email' },
+  { name: 'GitHub', icon: Github, url: 'https://github.com/Aakash-68', alt: 'Visit my GitHub profile' },
+  { name: 'LinkedIn', icon: Linkedin, url: 'www.linkedin.com/in/aakash-yogabalu-0a85652a8', alt: 'Connect with me on LinkedIn' },
+  { name: 'Email', icon: Mail, url: 'aakash.27@unb.ca', alt: 'Send me an email' },
   { name: 'Download Resume', icon: FileDown, url: './src/assets/pdf/aakashResume.pdf', alt: 'Download my resume (PDF)' }
 ];
 
