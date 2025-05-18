@@ -4,7 +4,7 @@ const contactPlatforms = [
   { name: 'GitHub', icon: Github, url: 'https://github.com/', alt: 'Visit my GitHub profile' },
   { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/', alt: 'Connect with me on LinkedIn' },
   { name: 'Email', icon: Mail, url: 'mailto:example@example.com', alt: 'Send me an email' },
-  { name: 'Download Resume', icon: FileDown, url: '/resume.pdf', alt: 'Download my resume (PDF)' }
+  { name: 'Download Resume', icon: FileDown, url: './src/assets/pdf/aakashResume.pdf', alt: 'Download my resume (PDF)' }
 ];
 
 export default function ContactBar() {
@@ -16,7 +16,7 @@ export default function ContactBar() {
             {contactPlatforms.map((platform) => {
               const Icon = platform.icon;
               return (
-                                  <a
+                  <a
                     key={platform.name}
                     href={platform.url}
                     target="_blank"
