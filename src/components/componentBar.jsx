@@ -1,18 +1,19 @@
-
 import { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, FileDown } from 'lucide-react';
 
 // Define contact platforms with their icons and URLs
 const contactPlatforms = [
-  { name: 'GitHub', icon: Github, url: 'https://github.com/' },
-  { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/' },
-  { name: 'Email', icon: Mail, url: 'mailto:example@example.com' },
-  { name: 'Download Resume', icon: FileDown, url: '/resume.pdf' }
+  { name: 'GitHub', icon: Github, url: 'https://github.com/', alt: 'Visit my GitHub profile' },
+  { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/', alt: 'Connect with me on LinkedIn' },
+  { name: 'Email', icon: Mail, url: 'mailto:example@example.com', alt: 'Send me an email' },
+  { name: 'Download Resume', icon: FileDown, url: '/resume.pdf', alt: 'Download my resume (PDF)' }
 ];
 
 export default function ContactBar() {
   // Track which item is being pressed
   const [pressedItem, setPressedItem] = useState(null);
+  // Track current hover state for alt text display
+  const [currentAlt, setCurrentAlt] = useState('');
   
   // Custom CSS for noise texture and hover effects
   useEffect(() => {
@@ -53,13 +54,19 @@ export default function ContactBar() {
       .contact-icon:active:before {
         opacity: 0.3;
       }
+      
+      .alt-message {
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
     `;
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
   }, []);
   
   return (
-    <div className="w-full flex justify-center mx-auto p-4">
+    <div className="w-full flex flex-col items-center justify-center mx-auto p-4">
+      {/* Alt text message at the top */}
+      
       <div className="inline-flex items-center px-4 py-3 rounded-full backdrop-blur-sm bg-gray-200/20 shadow-lg noise-bg">
         {/* Contact Platform Icons - Compact layout with exactly 4 items */}
         <div className="flex items-center gap-3">
@@ -75,10 +82,17 @@ export default function ContactBar() {
                 rel="noopener noreferrer"
                 className={`contact-icon relative group flex items-center justify-center bg-gray-400/10 backdrop-blur-md rounded-full h-12 w-12
                   ${isPressed ? 'shadow-none transform translate-y-px' : 'shadow-md'} 
-                  transition-all duration-200 ease-in-out hover:bg-gray-300/15`}
+                  transition-all duration-200 ease-in hover:bg-gray-300/15`}
                 onMouseDown={() => setPressedItem(index)}
                 onMouseUp={() => setPressedItem(null)}
-                onMouseLeave={() => setPressedItem(null)}
+                onMouseLeave={() => {
+                  setPressedItem(null);
+                  setCurrentAlt('');
+                }}
+                onMouseEnter={() => setCurrentAlt(platform.alt)}
+                onFocus={() => setCurrentAlt(platform.alt)}
+                onBlur={() => setCurrentAlt('')} 
+                aria-label={platform.alt}
                 download={platform.name === 'Download Resume' ? true : undefined}
               >
                 <Icon 
@@ -86,11 +100,12 @@ export default function ContactBar() {
                   className="text-gray-600 group-hover:text-gray-800 transition-colors" 
                 />
                 
-                {/* Enhanced Glassmorphic Tooltip on hover */}
-                <div className="absolute -bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-200 bg-gray-800/70 text-white text-xs px-3 py-1.5 rounded-lg pointer-events-none backdrop-blur-md transform group-hover:translate-y-0 translate-y-2 shadow-lg">
+                {/* Tooltip on hover - still included for visual users */}
+                <div className="absolute opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-200 bg-gray-800/70 text-white text-xs px-3 py-1.5 rounded-lg pointer-events-none backdrop-blur-md transform group-hover:translate-y-0 translate-y-2 shadow-lg">
                   {platform.name}
                 </div>
               </a>
+              
             );
           })}
         </div>

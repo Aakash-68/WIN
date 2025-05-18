@@ -1,1 +1,15 @@
+@font-face {
+  font-family: 'gd';
+  src: url('../assets/fonts/gd.otf');
+  
+  font-family: 's';
+  src: url('../assets/fonts/s.otf');
+}
+
 @import "tailwindcss";
+
+@theme{
+    --font-gd: gd, "sars-serif";
+    --font-s: s, "sars-serif";
+
+}

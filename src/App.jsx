@@ -11,11 +11,8 @@ function App() {
 
   return (
     <>
-     <div className="flex items-center justify-center min-h-screen gap-45">
-        <div className="w-64 h-64flex items-center justify-center text-xl font-medium">
+     <div className="flex items-center justify-center min-h-screen gap-30">
           <GlassCard />
-        </div>
-
         <div className="flex flex-col items-center gap-5">
           <img
             src="src/assets/profile.svg"
